@@ -85,7 +85,7 @@ export default function Dashboard() {
   },[page])
   return (
     <div >
-      <div style={{backgroundColor:"cyan", display:"flex", width:"100%", flexDirection:"column", paddingLeft:50, paddingRight:50, alignItems:'center'}}>
+      <div style={{ display: "flex", width: "100%", flexDirection: "column", paddingLeft: 50, paddingRight: 50, alignItems: 'center' }}>
         <div style={{textAlign:'center', fontWeight:"700", fontSize:100, color:"grey"}}>Welcome! {userInfo.getUserName()}</div>
         <input
           style={{backgroundColor:"white", borderRadius:10, padding:10, boxShadow: "1px 3px 10px grey", width:"100%"}}
@@ -96,16 +96,23 @@ export default function Dashboard() {
         />
         <button style={{padding:10, border:"solid 2px black", width:200, marginTop:20, borderRadius:20}}> Search </button>
       </div>
-    <Paper sx={{ width: '94%', overflow: 'hidden', margin:'3%' }}>
-      <TableContainer sx={{ maxHeight: 440 }}>
-        <Table stickyHeader aria-label="sticky table">
-          <TableHead>
-            <TableRow>
+      <Paper sx={{ width: '94%', overflow: 'hidden', margin: '3%', backgroundColor: "rgba(0,0,0,0.4)" }}>
+        <TableContainer sx={{
+          maxHeight: 440, overflow: 'auto',
+          scrollbarWidth: 'none', // Firefox
+          msOverflowStyle: 'none', // IE and Edge
+          '&::-webkit-scrollbar': {
+            display: 'none', // Chrome, Safari, and Opera
+          },
+        }}>
+          <Table stickyHeader aria-label="sticky table" >
+            <TableHead >
+              <TableRow >
               {columns.map((column) => (
                 <TableCell
                   key={column.id}
                   align={column.align}
-                  style={{ minWidth: column.minWidth }}
+                  style={{ minWidth: column.minWidth, backgroundColor: "#050d2d", color: "white" }} 
                 >
                   {column.label}
                 </TableCell>
@@ -122,7 +129,7 @@ export default function Dashboard() {
                       const value = row[column.id];
                       if (column.id == 'action'){
                         return (
-                          <TableCell key={column.id} align={column.align}>
+                          <TableCell key={column.id} align={column.align} style={{ borderBottom: "none" }}>
                             <Button>Borrow</Button>
                             <Button>Extend</Button>
                             <Button>Return</Button>
@@ -130,7 +137,7 @@ export default function Dashboard() {
                         );
                       }else{
                       return (
-                        <TableCell key={column.id} align={column.align}>
+                        <TableCell key={column.id} align={column.align} style={{ color: "white", borderBottom: "none" }}>
                           {column.format && typeof value === 'number'
                             ? column.format(value)
                             : value}

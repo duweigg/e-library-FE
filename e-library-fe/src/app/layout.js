@@ -24,7 +24,7 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body
         // className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-        style={{backgroundColor:"cyan"}}
+        style={{ background: "radial-gradient(circle, #0e204b 30%, #0a1539 70%)", }}
       >
         <Provider store={store}>
         {children}
