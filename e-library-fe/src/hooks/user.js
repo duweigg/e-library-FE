@@ -6,15 +6,12 @@ const useClient = ()=>{
         return userInfo
     }
     const getUserName = ()=>{
-        return userInfo.name
-    }
-    const getUserToken = ()=>{
-        return userInfo.token
+        return userInfo.nickname
     }
     const getUserBooks = ()=>{
         return userInfo.books
     }
-    return {getUserInfo,getUserName,getUserToken, getUserBooks }
+    return {getUserInfo,getUserName, getUserBooks }
 }
 
 export {useClient}

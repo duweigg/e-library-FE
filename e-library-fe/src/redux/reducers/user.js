@@ -2,8 +2,7 @@
 import { createSlice } from '@reduxjs/toolkit'
 
 const initialState = {
-  name: "Dummy",
-  token:"",
+  nickname: "",
   books:[]
 }
 
