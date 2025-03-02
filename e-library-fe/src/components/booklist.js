@@ -38,14 +38,12 @@ export const BookList = ({ bookList, totalbooks, page, rowsPerPage, setRowsPerPa
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
     setReloadBooks(true)
-    setReloadRecords(true)
   };
 
   const handleChangeRowsPerPage = (event) => {
     setRowsPerPage(+event.target.value);
     setPage(0);
     setReloadBooks(true)
-    setReloadRecords(true)
   };
 
   return <Paper sx={{ width: '100%', overflow: 'hidden', marginTop: "50px", backgroundColor: "rgba(0,0,0,0.4)" }}>

@@ -1,11 +1,11 @@
 import { borrowBookUrl, getBookListUrl } from "./urls"
 
-export const getBookList = async (page, pageSize, title) => {
+export const getBookList = async (page, page_size, title) => {
   const res = await fetch(
     getBookListUrl,
     {
       method: "POST",
-      body: JSON.stringify({ page, pageSize, title })
+      body: JSON.stringify({ page, page_size, title })
     }
   )
   if (!res.ok) throw new Error('Failed to fetch book data')

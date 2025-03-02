@@ -53,7 +53,6 @@ export default function Dashboard() {
           onChange={(e) => {
             setSearch(e.target.value)
             setReloadBooks(true)
-            setReloadRecords(true)
           }}
         />
       </div>

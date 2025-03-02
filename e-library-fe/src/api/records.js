@@ -1,13 +1,13 @@
 import { extentBookUrl, extentRecordUrl, getRecordListUrl, returnRecordUrl } from "./urls"
 
 // status: 0: all, 1: open, 2: closed
-export const getRecordList = async (page, pageSize, title, status) => {
+export const getRecordList = async (page, page_size, title, status) => {
     const token = localStorage.getItem("token")
     const res = await fetch(
         getRecordListUrl,
         {
             method: "POST",
-            body: JSON.stringify({ page, pageSize, title, status }),
+            body: JSON.stringify({ page, page_size, title, status }),
             headers: {
                 Authorization: "Bearer " + token
             }
