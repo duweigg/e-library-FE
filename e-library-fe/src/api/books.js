@@ -8,7 +8,7 @@ export const getBookList = async (page, page_size, title) => {
       body: JSON.stringify({ page, page_size, title })
     }
   )
-  if (!res.ok) throw new Error('Failed to fetch book data')
+  if (!res.ok) return { books: [], total: 0 }
   return await res.json()
 }
 
