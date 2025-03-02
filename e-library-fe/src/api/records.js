@@ -13,7 +13,7 @@ export const getRecordList = async (page, page_size, title, status) => {
             }
         }
     )
-    if (!res.ok) throw new Error('Failed to fetch record data')
+    if (!res.ok) return { records: [], total: 0 }
     return await res.json()
 }
 
