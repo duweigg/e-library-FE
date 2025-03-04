@@ -42,9 +42,9 @@ export default function Dashboard() {
     }, [recordPage, recordRowsPerPage, search, reloadRecords, recordQueryStatus])
 
     return (
-        <div >
+        <div style={{ marginLeft: "3%", marginRight: "3%", marginTop: "10px" }}>
             <div onClick={() => { router.push("/dashboard") }} style={{ color: "white" }}>Go To Dashboard</div>
-            <div style={{ display: "flex", width: "94%", flexDirection: "column", margin: "3%", alignItems: 'center' }}>
+            <div style={{ display: "flex", width: "100%", flexDirection: "column", alignItems: 'center' }}>
                 <div style={{ textAlign: 'center', fontWeight: "700", fontSize: 100, color: "grey" }}>Welcome! {userInfo.nickname}</div>
                 <input
                     style={{ backgroundColor: "white", borderRadius: 10, padding: 10, boxShadow: "1px 3px 10px grey", width: "100%" }}
@@ -55,17 +55,27 @@ export default function Dashboard() {
                     }}
                 />
             </div>
-            <div style={{ display: "flex", flexDirection: "column", margin: "3%" }}>
-                <button style={{ backgroundColor: "white", marginTop: "30px", width: "200px" }} onClick={() => {
-                    if (recordQueryStatus == 1) {
-                        setRecordQueryStatus(0)
-                    }
-                    if (recordQueryStatus == 0) {
-                        setRecordQueryStatus(1)
-                    }
-                    setReloadRecords(true)
-                    setRecordPage(0)
-                }}>
+            <div style={{ display: "flex", flexDirection: "column" }}>
+                <button
+                    style={{
+                        marginTop: 80,
+                        marginBottom: 10,
+                        border: "solid 2px white",
+                        padding: "5px 10px 5px 10px",
+                        borderRadius: 20,
+                        color: "white",
+                        width: 200
+                    }}
+                    onClick={() => {
+                        if (recordQueryStatus == 1) {
+                            setRecordQueryStatus(0)
+                        }
+                        if (recordQueryStatus == 0) {
+                            setRecordQueryStatus(1)
+                        }
+                        setReloadRecords(true)
+                        setRecordPage(0)
+                    }}>
                     {recordQueryStatus == 0 ? "Show Open Records" : "Show All Records"}
                 </button>
                 <div style={{ height: "10px" }}></div>

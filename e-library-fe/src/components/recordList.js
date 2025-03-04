@@ -43,6 +43,29 @@ const columns = [
     }
   },
   {
+    id: 'returned_at',
+    label: 'Returned At',
+    minWidth: 170,
+    align: 'right',
+    format: (data) => {
+      if (data == null) {
+        return (
+          <div>
+            <div>-</div>
+            <div>-</div>
+          </div>
+        )
+
+      }
+      return (
+        <div>
+          <div>{moment(data).format("HH:mm:ss")}</div>
+          <div>{moment(data).format("DD/MM/YYYY")}</div>
+        </div>
+      )
+    }
+  },
+  {
     id: 'status',
     label: 'Status',
     minWidth: 170,
