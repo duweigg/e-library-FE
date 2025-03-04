@@ -30,7 +30,7 @@ export default function Login() {
         <div style={{ width: "50%" }}>
           <div style={{ fontSize: 20 }}>Username</div>
           <input
-            style={{ backgroundColor: "rgba(255,255,255,0.1)", width: "100%" }}
+            style={{ backgroundColor: "rgba(255,255,255,0.1)", width: "100%", padding: 5, paddingLeft: 10, borderRadius: 10 }}
             value={username}
             onChange={(e) => {
               setUsername(e.target.value)
@@ -41,7 +41,8 @@ export default function Login() {
         <div style={{ width: "50%" }}>
           <div style={{ fontSize: 20 }}>Password</div>
           <input
-            style={{ backgroundColor: "rgba(255,255,255,0.1)", width: "100%" }}
+            type="password"
+            style={{ backgroundColor: "rgba(255,255,255,0.1)", width: "100%", padding: 5, paddingLeft: 10, borderRadius: 10 }}
             value={password}
             onChange={(e) => {
               setPassword(e.target.value)
@@ -49,8 +50,11 @@ export default function Login() {
         </div>
         <button
           style={{ marginTop: 80, marginBottom: 10, border: "solid 2px white", padding: "5px 10px 5px 10px", borderRadius: 20 }}
-          onClick={() => {
-            Signin(username, password)
+          onClick={async () => {
+            let isSignIn = await Signin(username, password)
+            if (isSignIn) {
+              router.push("/dashboard")
+            }
           }}>Sign In</button>
         <div style={{ fontSize: 13, color: "grey" }}>Do not have account yet? <span style={{ color: "white" }} onClick={() => { router.push("/signup") }}>Sign Up</span></div>
 

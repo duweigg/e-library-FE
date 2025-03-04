@@ -1,5 +1,5 @@
 "use client"
-import { Register } from "@/api/user";
+import { Register, Signin } from "@/api/user";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
@@ -32,7 +32,7 @@ export default function SignUp() {
         <div style={{ width: "50%" }}>
           <div style={{ fontSize: 20 }}>Username</div>
           <input
-            style={{ backgroundColor: "rgba(255,255,255,0.1)", width: "100%" }}
+            style={{ backgroundColor: "rgba(255,255,255,0.1)", width: "100%", padding: 5, paddingLeft: 10, borderRadius: 10 }}
             value={username}
             onChange={(e) => {
               setUsername(e.target.value)
@@ -42,7 +42,9 @@ export default function SignUp() {
         <div style={{ height: 15 }}></div>
         <div style={{ width: "50%" }}>
           <div>Password</div>
-          <input style={{ backgroundColor: "rgba(255,255,255,0.1)", width: "100%" }}
+          <input
+            type="password"
+            style={{ backgroundColor: "rgba(255,255,255,0.1)", width: "100%", padding: 5, paddingLeft: 10, borderRadius: 10 }}
             value={password}
             onChange={(e) => {
               setPassword(e.target.value)
@@ -51,7 +53,9 @@ export default function SignUp() {
         <div style={{ height: 15 }}></div>
         <div style={{ width: "50%" }}>
           <div>Confirm Password</div>
-          <input style={{ backgroundColor: "rgba(255,255,255,0.1)", width: "100%" }}
+          <input
+            type="password"
+            style={{ backgroundColor: "rgba(255,255,255,0.1)", width: "100%", padding: 5, paddingLeft: 10, borderRadius: 10 }}
             value={confirmPassword}
             onChange={(e) => {
               setConfirmPassword(e.target.value)
@@ -60,7 +64,8 @@ export default function SignUp() {
         <div style={{ height: 15 }}></div>
         <div style={{ width: "50%" }}>
           <div>Nickname</div>
-          <input style={{ backgroundColor: "rgba(255,255,255,0.1)", width: "100%" }}
+          <input
+            style={{ backgroundColor: "rgba(255,255,255,0.1)", width: "100%", padding: 5, paddingLeft: 10, borderRadius: 10 }}
             value={nickname}
             onChange={(e) => {
               setNickname(e.target.value)
@@ -68,8 +73,14 @@ export default function SignUp() {
         </div>
         <div>
           <button style={{ marginTop: 40, marginBottom: 10, border: "solid 2px white", padding: "5px 10px 5px 10px", borderRadius: 20 }}
-            onClick={() => {
-              Register(username, password, nickname)
+            onClick={async () => {
+              let data = await Register(username, password, nickname)
+              if (data.message == "User created successfully") {
+                let isSignIn = await Signin(username, password)
+                if (isSignIn) {
+                  router.push("/dashboard")
+                }
+              }
             }}>Sign Up</button>
         </div>
         <div
