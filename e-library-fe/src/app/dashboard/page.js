@@ -59,7 +59,7 @@ export default function Dashboard() {
       </div>
       <BookList
         bookList={bookList || []}
-        totalbooks={totalbooks}
+        totalbooks={totalbooks || 0}
         page={bookPage}
         rowsPerPage={bookRowsPerPage}
         setPage={setBookPage}

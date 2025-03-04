@@ -71,7 +71,7 @@ export default function Dashboard() {
                 <div style={{ height: "10px" }}></div>
                 <RecordList
                     bookList={recordList || []}
-                    totalbooks={totalRecords}
+                    totalbooks={totalRecords || 0}
                     page={recordPage}
                     rowsPerPage={recordRowsPerPage}
                     setPage={setRecordPage}
