@@ -64,6 +64,7 @@ export default function Dashboard() {
                         setRecordQueryStatus(1)
                     }
                     setReloadRecords(true)
+                    setRecordPage(0)
                 }}>
                     {recordQueryStatus == 0 ? "Show Open Records" : "Show All Records"}
                 </button>
