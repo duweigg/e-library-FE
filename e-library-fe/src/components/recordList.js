@@ -83,14 +83,12 @@ export const RecordList = ({ bookList, totalbooks, page, rowsPerPage, setRowsPer
 
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
-    setReloadBooks(true)
     setReloadRecords(true)
   };
 
   const handleChangeRowsPerPage = (event) => {
     setRowsPerPage(+event.target.value);
     setPage(0);
-    setReloadBooks(true)
     setReloadRecords(true)
   };
 
